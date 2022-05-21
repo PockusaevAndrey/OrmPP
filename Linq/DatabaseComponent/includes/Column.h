@@ -10,11 +10,6 @@
 
 namespace etd::linq::databaseComponent
 {
-    std::string to_string(const std::string &value)
-    {
-        return value;
-    }
-
     template<typename T>
     class Column final
     {
@@ -22,8 +17,8 @@ namespace etd::linq::databaseComponent
         std::string name;
         T type{};
 
-
         Column() = default;
+
         explicit Column(std::string name);
 
 
