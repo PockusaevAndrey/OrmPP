@@ -7,7 +7,7 @@
 
 #include <string>
 
-namespace etd::linq::databaseComponent
+namespace linq::db
 {
     enum class OrderSort : int
     {
@@ -21,6 +21,9 @@ namespace etd::linq::databaseComponent
     class Sort
     {
     public:
+
+        Sort();
+
         Sort(std::string sort);
 
         Sort &operator&(Sort sort);
@@ -28,7 +31,7 @@ namespace etd::linq::databaseComponent
         std::string get();
 
     private:
-        std::string _sortedRow;
+        std::string _sortedRow{};
     };
 }
 #endif //LINQ_SORT_H

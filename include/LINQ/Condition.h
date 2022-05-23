@@ -7,7 +7,7 @@
 
 #include <string>
 
-namespace etd::linq::databaseComponent
+namespace linq::db
 {
     class Condition
     {
@@ -25,7 +25,7 @@ namespace etd::linq::databaseComponent
         std::string getWithoutScope() const;
 
     private:
-        std::string condition;
+        std::string condition{};
     };
 }
 #endif //LINQ_CONDITION_H
