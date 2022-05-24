@@ -15,8 +15,6 @@ namespace linq::db
         DESC
     };
 
-    using
-    enum OrderSort;
 
     class Sort
     {

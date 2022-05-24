@@ -37,10 +37,7 @@ public:
 
 int main()
 {
-
-
     string simpleSelect =
-
             Select(Task::taskNum, Task::id, Task::company_id, Task::status)
             .from(Task())
             .getQuery();
@@ -51,7 +48,6 @@ int main()
 
 
     string middleSelect =
-
             Select(Task::taskNum, Task::id, Task::company_id, Task::status)
             .from(Task())
             .where(Task::taskNum > "989" OR Task::taskNum == "q" AND Task::id > 8 OR Task::id < 6)
@@ -63,13 +59,12 @@ int main()
 
 
     string hardlySelect =
-
             Select(Task::taskNum, Task::id, Task::company_id, Task::status)
             .from(Task())
             .where(Task::taskNum > "989" OR Task::taskNum == "234235" AND Task::id > 8 OR Task::id < 6 OR
                    Task::id == 6 AND Task::company_id == 213 OR Task::company_id < 25)
-            .orderBy(Task::id - ASC & Task::taskNum - DESC & Task::status - DESC)
-            .getQuery();
+            .orderBy(Task::id - OrderSort::ASC & Task::taskNum - OrderSort::DESC & Task::status - OrderSort::DESC).getQuery()
+            ;
 
     cout << hardlySelect << endl;
 
