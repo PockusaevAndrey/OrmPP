@@ -17,6 +17,9 @@ using namespace linq::db;
 using namespace linq::abstraction;
 using namespace std;
 
+#define OR |
+#define AND &
+
 namespace linq::interface
 {
     class Where : public SqlQuery

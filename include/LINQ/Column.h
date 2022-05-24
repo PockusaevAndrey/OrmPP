@@ -7,6 +7,7 @@
 
 #include "LINQ/Condition.h"
 #include "LINQ/Sort.h"
+#include "ToString.hpp"
 
 namespace linq::db
 {
@@ -45,10 +46,11 @@ namespace linq::db
     };
 }
 
-std::string to_string(const std::string &value)
-{
-    return value;
-}
+//std::string to_string(const std::string &value)
+//{
+//    return value;
+//}
+
 
 template<typename T>
 template<typename V>

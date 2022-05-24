@@ -7,8 +7,6 @@ using namespace linq::db;
 using namespace linq::abstraction;
 using namespace linq::interface;
 
-#define OR |
-#define AND &
 
 
 class Task : public Table
@@ -39,6 +37,8 @@ public:
 
 int main()
 {
+
+
     string simpleSelect =
 
             Select(Task::taskNum, Task::id, Task::company_id, Task::status)
@@ -66,7 +66,7 @@ int main()
 
             Select(Task::taskNum, Task::id, Task::company_id, Task::status)
             .from(Task())
-            .where(Task::taskNum > "989" OR Task::taskNum == "q" AND Task::id > 8 OR Task::id < 6 OR
+            .where(Task::taskNum > "989" OR Task::taskNum == "234235" AND Task::id > 8 OR Task::id < 6 OR
                    Task::id == 6 AND Task::company_id == 213 OR Task::company_id < 25)
             .orderBy(Task::id - ASC & Task::taskNum - DESC & Task::status - DESC)
             .getQuery();

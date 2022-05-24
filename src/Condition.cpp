@@ -12,7 +12,7 @@ linq::db::Condition::Condition(const std::string &condition)
 
 linq::db::Condition::Condition(const linq::db::Condition &condition)
 {
-    this->condition = "(" + condition.getWithoutScope();
+    this->condition = (condition.condition.starts_with("(") ? condition.getWithoutScope() : "(" + condition.getWithoutScope());
 }
 
 linq::db::Condition &
