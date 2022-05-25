@@ -7,9 +7,6 @@
 
 #include <string>
 
-std::string to_string(const std::string &value)
-{
-    return value;
-}
+std::string to_string(const std::string &value);
 
 #endif //LINQ_TOSTRING_HPP

@@ -2,7 +2,7 @@
 // Created by eldar on 21.05.22.
 //
 
-#include "LINQ/Condition.h"
+#include "LINQ/components/Condition.h"
 
 
 linq::db::Condition::Condition(const std::string &condition)

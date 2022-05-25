@@ -1,3 +1,4 @@
+/*
 #include <iostream>
 #include "Linq.h"
 #include "include/LINQ/interface/ISelect.h"
@@ -33,11 +34,13 @@ public:
     }
 
 };
+*/
 
 
 int main()
 {
-    string simpleSelect =
+
+    /*string simpleSelect =
             Select(Task::taskNum, Task::id, Task::company_id, Task::status)
             .from(Task())
             .getQuery();
@@ -66,7 +69,7 @@ int main()
             .orderBy(Task::id - OrderSort::ASC & Task::taskNum - OrderSort::DESC & Task::status - OrderSort::DESC).getQuery()
             ;
 
-    cout << hardlySelect << endl;
+    cout << hardlySelect << endl;*/
 
     return 0;
 }

@@ -9,7 +9,7 @@
 #include <string>
 #include <vector>
 #include "../../Linq.h"
-#include "LINQ/SqlQuery.hpp"
+#include "LINQ/components/SqlQuery.hpp"
 #include "IWhere.h"
 #include "../exception/InvalidColumn.hpp"
 #include "../exception/InvalidQuery.hpp"

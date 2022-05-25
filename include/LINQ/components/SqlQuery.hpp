@@ -14,19 +14,11 @@ namespace linq::abstraction
     public:
         SqlQuery() = default;
 
-        SqlQuery(std::string query) : _sqlQuery(query)
-        {
-        }
+        SqlQuery(std::string query);
 
-        std::string getQuery()
-        {
-            return validateQuery();
-        }
+        std::string getQuery();
 
-        bool contains(std::string value)
-        {
-            return _sqlQuery.find(value) != std::string::npos;
-        }
+        bool contains(std::string value);
 
         virtual std::string validateQuery() = 0;
 

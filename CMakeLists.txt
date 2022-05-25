@@ -7,8 +7,8 @@ file(GLOB
         SOURCES "src/*.cpp"
         )
 file(GLOB
-        HEADERS "include/*.h"
+        MYSQL "src/MySQL/*.cpp"
         )
 
-add_executable(${PROJECT_NAME} main.cpp ${SOURCES} ${HEADERS} include/LINQ/interface/ISelect.h include/LINQ/interface/IFrom.h include/LINQ/interface/IWhere.h include/LINQ/interface/IOrderBy.h include/LINQ/exception/InvalidColumn.hpp include/LINQ/exception/InvalidQuery.hpp src/DDL/Select.cpp src/DDL/From.cpp src/DDL/Where.cpp src/DDL/OrderBy.cpp include/LINQ/ToString.hpp)
+add_executable(${PROJECT_NAME} main.cpp ${SOURCES} ${MYSQL})
 target_link_libraries(${PROJECT_NAME} PRIVATE etddb)

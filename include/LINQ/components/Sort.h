@@ -7,17 +7,14 @@
 
 #include <string>
 
-namespace linq::db
-{
-    enum class OrderSort : int
-    {
+namespace linq::db {
+    enum class OrderSort : int {
         ASC,
         DESC
     };
 
 
-    class Sort
-    {
+    class Sort {
     public:
 
         Sort();

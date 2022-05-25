@@ -2,7 +2,7 @@
 // Created by eldar on 21.05.22.
 //
 
-#include "LINQ/Sort.h"
+#include "LINQ/components/Sort.h"
 
 
 linq::db::Sort::Sort(std::string sort)

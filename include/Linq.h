@@ -5,6 +5,6 @@
 #ifndef LINQ_LINQ_H
 #define LINQ_LINQ_H
 
-#include "LINQ/Table.h"
+#include "LINQ/components/Table.h"
 
 #endif //LINQ_LINQ_H
