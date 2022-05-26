@@ -22,6 +22,8 @@ namespace linq::abstraction
 
         virtual std::string validateQuery() = 0;
 
+        operator std::string();
+
     protected:
         std::string _sqlQuery;
     };

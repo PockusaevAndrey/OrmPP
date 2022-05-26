@@ -11,18 +11,17 @@
 #include "LINQ/query/From.hpp"
 
 namespace linq::query{
+    template<typename ...T>
     class Select: public abstraction::SqlQuery{
     public:
-        template<typename ...T>
         Select(db::Column <T>... rows);
         std::string validateQuery() override;
         linq::query::From from(linq::db::Table table);
     private:
-        std::vector<std::string> _columnName;
+        std::vector<std::string> _columnName{};
 
     };
+
 }
-
-
-
+#include "LINQ/inc/Select.tpp"
 #endif //LINQ_SELECT_HPP

@@ -8,35 +8,33 @@
 #include "Condition.h"
 #include "Sort.h"
 #include "ToString.hpp"
+#include <any>
+
+
 
 namespace linq::db {
     template<typename T>
     class Column final {
     public:
-        std::string name{};
+        std::string name{}, tableName{};
 
         Column() = default;
 
-        Column(std::string name) : name(std::move(name)) {
+        Column(std::string name);
 
-        }
+        Condition operator>(std::any value);
 
-        template<typename V>
-        Condition operator>(V value);
+        Condition operator<(std::any value);
 
-        template<typename V>
-        Condition operator<(V value);
+        Condition operator==(std::any value);
 
-        template<typename V>
-        Condition operator==(V value);
+        Condition operator!=(std::any value);
 
-        template<typename V>
-        Condition operator!=(V value);
-
-        Sort operator-(OrderSort order) {
+        Sort operator<<(OrderSort order) {
             return {name + " " + ((order == OrderSort::ASC) ? "ASC" : "DESC")};
         }
 
     };
 }
+#include "LINQ/inc/Column.tpp"
 #endif //LINQ_COLUMN_H

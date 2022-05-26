@@ -5,37 +5,27 @@
 #include "LINQ/components/Condition.h"
 
 
-linq::db::Condition::Condition(const std::string &condition)
-{
-    this->condition += condition;
+linq::db::Condition::Condition(const std::string &condition) {
+    this->condition = "(" + condition;
 }
 
-linq::db::Condition::Condition(const linq::db::Condition &condition)
-{
-    this->condition = (condition.condition.starts_with("(") ? condition.getWithoutScope() : "(" + condition.getWithoutScope());
+linq::db::Condition::Condition(const linq::db::Condition &condition) {
+    this->condition = "(" + condition.get();
 }
 
 linq::db::Condition &
-linq::db::Condition::operator&(linq::db::Condition condition)
-{
-    this->condition += ") AND (" + condition.getWithoutScope();
+linq::db::Condition::operator&(linq::db::Condition condition) {
+    this->condition += " AND " + condition.get();
     return *this;
 }
 
 linq::db::Condition &
-linq::db::Condition::operator|(linq::db::Condition condition)
-{
-    std::string query = condition.getWithoutScope();
-    this->condition += " OR " + (query.starts_with('(') ? query.substr(1, query.length()) : query);
+linq::db::Condition::operator|(linq::db::Condition condition) {
+    this->condition += " OR " + condition.get();
     return *this;
 }
 
-std::string linq::db::Condition::get() const
-{
+std::string linq::db::Condition::get() const {
     return condition + ")";
 }
 
-std::string linq::db::Condition::getWithoutScope() const
-{
-    return condition;
-}

@@ -15,3 +15,7 @@ std::string linq::abstraction::SqlQuery::getQuery() {
 bool linq::abstraction::SqlQuery::contains(std::string value) {
     return _sqlQuery.find(value) != std::string::npos;
 }
+
+linq::abstraction::SqlQuery::operator std::string() {
+    return this->validateQuery();
+}

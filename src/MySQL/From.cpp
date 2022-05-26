@@ -8,8 +8,8 @@
 #include "LINQ/components/Table.h"
 #include "LINQ/Errors.hpp"
 
-linq::query::From::From(std::string query, linq::db::Table table, std::vector<std::string> columnName) : SqlQuery(
-        std::move(query)), _table(std::move(table)), _columnName(std::move(columnName)) {
+linq::query::From::From(std::string query, linq::db::Table table, std::vector <std::string> columns) : SqlQuery(
+        std::move(query)), _table(std::move(table)), _columnName(columns) {
 }
 
 std::string linq::query::From::validateQuery()
@@ -43,7 +43,8 @@ std::string linq::query::From::validateQuery()
     return _sqlQuery;
 }
 
-linq::query::Where linq::query::From::where(Condition condition)
+linq::query::Where linq::query::From::where(linq::db::Condition condition)
 {
     return linq::query::Where(validateQuery(), condition);
 }
+

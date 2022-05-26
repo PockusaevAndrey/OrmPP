@@ -7,10 +7,8 @@
 
 #include <string>
 
-namespace linq::db
-{
-    class Condition
-    {
+namespace linq::db {
+    class Condition {
     public:
         Condition(const std::string &condition);
 
@@ -21,8 +19,6 @@ namespace linq::db
         Condition &operator|(Condition condition);
 
         std::string get() const;
-
-        std::string getWithoutScope() const;
 
     private:
         std::string condition{};

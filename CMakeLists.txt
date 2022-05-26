@@ -7,8 +7,18 @@ file(GLOB
         SOURCES "src/*.cpp"
         )
 file(GLOB
+        TEMPLATES "include/LINQ/inc/*.tpp"
+        )
+file(GLOB
         MYSQL "src/MySQL/*.cpp"
         )
 
-add_executable(${PROJECT_NAME} main.cpp ${SOURCES} ${MYSQL})
+add_executable(
+        ${PROJECT_NAME}
+        ${SOURCES}
+        ${MYSQL}
+        ${TEMPLATES}
+        main.cpp
+        )
+
 target_link_libraries(${PROJECT_NAME} PRIVATE etddb)

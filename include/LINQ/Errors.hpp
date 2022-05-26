@@ -6,6 +6,7 @@
 #define LINQ_ERRORS_HPP
 
 #include <exception>
+#include <string>
 
 namespace linq {
     class InvalidColumn : public std::exception {
@@ -16,6 +17,12 @@ namespace linq {
         const char *what() const noexcept override;
     };
 
+    class TypeMismatch : public std::exception {
+        std::string column, result;
+    public:
+        TypeMismatch(std::string column);
+        const char *what() const noexcept override;
+    };
 
 }
 
