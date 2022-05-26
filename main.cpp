@@ -1,9 +1,9 @@
 #include <iostream>
-#include "LINQ/query/Select.hpp"
+#include "orm/query/Select.hpp"
 
 using namespace std;
-using namespace linq::db;
-using namespace linq::abstraction;
+using namespace orm::db;
+using namespace orm::abstraction;
 
 
 class Task : public Table {
@@ -24,7 +24,7 @@ public:
 int main() {
     Task task;
     Task2 task2;
-    cout << (std::string) linq::query::Select(task.id)
+    cout << (std::string) orm::query::Select(task2.id)
             .from(task)
             .where(task.id <
     5 AND task.status == (std::string) "Выполнена")

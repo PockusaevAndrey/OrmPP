@@ -1,0 +1,50 @@
+//
+// Created by pokys on 25.05.2022.
+//
+
+#include "orm/query/From.hpp"
+
+#include <utility>
+#include "orm/components/Table.hpp"
+#include "orm/Errors.hpp"
+
+orm::query::From::From(std::string query, orm::db::Table table, std::vector <std::string> columns) : SqlQuery(
+        std::move(query)), _table(std::move(table)), _columnName(columns) {
+}
+
+std::string orm::query::From::validateQuery()
+{
+    auto isRow = [&](const std::string& row) -> bool
+    {
+        for (int i = 0; i < _table.getColumnSize(); i++)
+        {
+            if (row == _table[i])
+            {
+                return true;
+            }
+        }
+        return false;
+    };
+    for (auto &i: _columnName)
+    {
+        if (!isRow(i))
+        {
+            throw InvalidColumn();
+        }
+    }
+
+    _sqlQuery += "\nFROM " + _table.getTableName();
+
+    if (!contains("FROM "))
+    {
+        throw InvalidQuery();
+    }
+
+    return _sqlQuery;
+}
+
+orm::query::Where orm::query::From::where(orm::db::Condition condition)
+{
+    return orm::query::Where(validateQuery(), condition);
+}
+
