@@ -19,7 +19,7 @@ namespace orm::db {
         [[nodiscard]] std::string getTableName() const;
 
         std::string operator[](int i);
-
+        std::vector<std::string> getColumns();
     };
 }
 

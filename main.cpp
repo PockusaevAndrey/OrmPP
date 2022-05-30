@@ -1,34 +1,65 @@
 #include <iostream>
 #include "orm/query/Select.hpp"
 
-using namespace std;
-using namespace orm::db;
-using namespace orm::abstraction;
 
-
-class Task : public Table {
-public:
-    Column<int> id = controller.addColumn<int>(getName(id));
-    Column<std::string> status = controller.addColumn<std::string>(getName(status));
-    Task(): Table(getName(Task)){};
-
-};
-class Task2 : public Table {
-public:
-    Column<int> id = controller.addColumn<int>("hello");
-    Task2(): Table(getName(Task2)){};
-
+#define OrmTable(name, realization) \
+class name : public orm::db::Table { \
+public:                \
+name(): Table(#name){};             \
+realization                                    \
 };
 
+#define OrmColumn(type, name) \
+orm::db::Column<type> name = controller.addColumn<type>(#name);
+
+OrmTable(AllTaskInfo, OrmColumn(int, id)
+        OrmColumn(int, task_num)
+        OrmColumn(int, company_id)
+        OrmColumn(std::string, company_name)
+        OrmColumn(std::string, description)
+        OrmColumn(int, status_id)
+        OrmColumn(int, task_types_id)
+        OrmColumn(bool, deleted)
+        OrmColumn(std::string, phone)
+        OrmColumn(int, apartment)
+        OrmColumn(int, entrance)
+        OrmColumn(int, house_id)
+        OrmColumn(int, floor)
+        OrmColumn(int, system)
+        OrmColumn(std::string, contact_citizen_info)
+        OrmColumn(int, creation_date)
+        OrmColumn(int, finish_date)
+        OrmColumn(int, planning_date)
+        OrmColumn(int, received_date)
+        OrmColumn(int, payed_date)
+        OrmColumn(int, orderedDate)
+        OrmColumn(std::string, owner_name)
+        OrmColumn(std::string, user_name)
+        OrmColumn(std::string, finished_user_name)
+)
+
+OrmTable(Employees, OrmColumn(int, id)
+        OrmColumn(std::string, name)
+        OrmColumn(int, company_id)
+        OrmColumn(int, role_id)
+        OrmColumn(std::string, position)
+        OrmColumn(bool, deleted)
+)
 
 int main() {
-    Task task;
-    Task2 task2;
-    cout << (std::string) orm::query::Select(task2.id)
+    AllTaskInfo task;
+    Employees empl;
+    std::cout << (std::string) orm::query::Select(task.id, empl.name)
             .from(task)
-            .where(task.id <
-    5 AND task.status == (std::string) "Выполнена")
-    .orderBy((task.id << OrderSort::DESC)) << std::endl;
+            .join(orm::query::LEFT, empl, task.owner_name == empl.name)
+            .where(
+                    task.id.in({1, 2, 3, 4, 5, 6, 7})
+                    & task.company_id.in({1, 2})
+                    )
+            .orderBy(
+                    (task.id << orm::db::OrderSort::DESC)
+                    )
+              << std::endl;
 
     return 0;
 }

@@ -20,4 +20,8 @@ std::string orm::db::Table::operator[](int i) {
 
 orm::db::Table::Table(std::string name) {
     controller.setTable(name);
-};
+}
+
+std::vector<std::string> orm::db::Table::getColumns() {
+    return controller.getColumns();
+}

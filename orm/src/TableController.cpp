@@ -24,4 +24,12 @@ void orm::db::TableController::setTable(std::string table) {
 
 }
 
+void orm::db::TableController::joinColumns(std::vector<std::string> cols) {
+    columns.insert(columns.end(), cols.begin(), cols.end());
+}
+
+std::vector<std::string> orm::db::TableController::getColumns() {
+    return columns;
+}
+
 

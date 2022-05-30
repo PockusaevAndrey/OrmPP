@@ -9,6 +9,7 @@
 #include "Sort.hpp"
 #include "ToString.hpp"
 #include <any>
+#include "vector"
 
 
 
@@ -23,16 +24,20 @@ namespace orm::db {
         Column(std::string name);
 
         Condition operator>(std::any value);
+        Condition operator>(Column<T> value);
 
         Condition operator<(std::any value);
+        Condition operator<(Column<T> value);
 
         Condition operator==(std::any value);
+        Condition operator==(Column<T> value);
 
         Condition operator!=(std::any value);
+        Condition operator!=(Column<T> value);
 
-        Sort operator<<(OrderSort order) {
-            return {name + " " + ((order == OrderSort::ASC) ? "ASC" : "DESC")};
-        }
+        Condition in(const std::vector<std::any>& vals);
+
+        Sort operator<<(OrderSort order);
 
     };
 }

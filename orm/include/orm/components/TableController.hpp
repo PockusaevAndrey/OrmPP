@@ -24,6 +24,8 @@ namespace orm::db {
         size_t getColumnSize() const;
         std::string getTableName() const;
         std::string at(int i);
+        void joinColumns(std::vector<std::string> cols);
+        std::vector<std::string> getColumns();
     };
 
 
