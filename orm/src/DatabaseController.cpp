@@ -11,3 +11,7 @@ orm::db::DatabaseController::DatabaseController(std::string name): _name(std::mo
 void orm::db::DatabaseController::setDatabase(const std::string& name) {
     _name = name;
 }
+
+std::string orm::db::DatabaseController::getDatabase() {
+    return _name;
+}

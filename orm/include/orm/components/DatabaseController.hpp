@@ -10,6 +10,7 @@
 #include <string>
 #include <memory>
 #include "Table.hpp"
+#include "Function.hpp"
 
 namespace orm::db {
     class DatabaseController {
@@ -18,8 +19,12 @@ namespace orm::db {
         DatabaseController(std::string name);
         DatabaseController() = default;
         void setDatabase(const std::string& name);
+        std::string getDatabase();
         template<class T>
         T addTable(const std::string& tableName);
+
+        template<typename T, typename ...Args>
+        Function<T, Args...> addFunction(const std::string& name);
     };
 }
 #include "orm/template_definition/Database.tpp"

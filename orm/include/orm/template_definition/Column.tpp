@@ -85,3 +85,14 @@ template<typename T>
 orm::db::Condition orm::db::Column<T>::operator!=(orm::db::Column<T> value) {
     return {name + " != " + value.name};
 }
+
+template<typename T>
+orm::db::Column<T>::operator std::string() {
+    return name;
+}
+
+template<typename T>
+orm::db::Column<T> orm::db::Column<T>::as(std::string as_name) {
+    return {this->name + " as " + as_name};
+}
+

@@ -1,0 +1,14 @@
+#ifndef CONFIG
+#define CONFIG
+
+#include <string>
+
+class Config {
+public:
+    std::string ip  = "${DB_IP}";
+    int port = ${DB_PORT};
+    std::string login = "${DB_LOGIN}";
+    std::string password = "${DB_PASSWORD}";
+};
+
+#endif // CONFIG

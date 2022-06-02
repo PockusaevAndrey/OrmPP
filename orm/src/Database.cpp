@@ -9,3 +9,7 @@
 orm::db::Database::Database(const std::string& name) {
     controller.setDatabase(name);
 }
+
+orm::db::Database::operator std::string() {
+    return controller.getDatabase();
+}

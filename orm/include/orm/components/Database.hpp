@@ -16,6 +16,7 @@ namespace orm::db {
     public:
         DatabaseController controller;
         Database(const std::string& name);
+        operator std::string();
     };
 
 }

@@ -23,6 +23,8 @@ namespace orm::db {
 
         Column(std::string name);
 
+        Column<T> as(std::string);
+
         Condition operator>(std::any value);
         Condition operator>(Column<T> value);
 
@@ -38,6 +40,8 @@ namespace orm::db {
         Condition in(const std::vector<std::any>& vals);
 
         Sort operator<<(OrderSort order);
+
+        operator std::string();
 
     };
 }

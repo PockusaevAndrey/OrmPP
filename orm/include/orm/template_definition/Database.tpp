@@ -11,4 +11,9 @@ T orm::db::DatabaseController::addTable(const std::string& tableName) {
     return {_name + "." + tableName};
 }
 
+template<typename T, typename... Args>
+orm::db::Function<T, Args...> orm::db::DatabaseController::addFunction(const std::string& name) {
+    return {_name+"."+name};
+}
+
 
