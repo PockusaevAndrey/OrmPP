@@ -8,6 +8,7 @@
 #include "orm/components/SqlQuery.hpp"
 #include "orm/query/Where.hpp"
 #include "orm/components/Table.hpp"
+#include "Limit.hpp"
 
 namespace orm::query {
     enum JoinType {
@@ -22,7 +23,11 @@ namespace orm::query {
         std::vector <std::string> _columnTableCols{};
         db::Condition _condition;
         JoinType _joinType;
+#ifdef ORM_FUNCTION
+        bool throw_err = false;
+#else
         bool throw_err = true;
+#endif
 
     public:
         Join(std::string query, orm::query::JoinType joinType, orm::db::Table table,
@@ -33,6 +38,7 @@ namespace orm::query {
         Join join(JoinType joinType, db::Table table, const db::Condition& condition);
 
         std::string validateQuery() override;
+        Limit limit(int count);
     };
 }
 

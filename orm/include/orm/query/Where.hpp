@@ -14,6 +14,7 @@
 #include "orm/components/Condition.hpp"
 #include "orm/Errors.hpp"
 #include "OrderBy.hpp"
+#include "Limit.hpp"
 
 
 namespace orm::query {
@@ -24,6 +25,7 @@ namespace orm::query {
 
         std::string validateQuery() override;
         OrderBy orderBy(db::Sort sort);
+        Limit limit(int count);
     };
 }
 

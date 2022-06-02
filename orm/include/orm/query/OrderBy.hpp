@@ -9,6 +9,7 @@
 
 #include "orm/components/SqlQuery.hpp"
 #include "orm/components/Sort.hpp"
+#include "Limit.hpp"
 
 namespace orm::query {
     class OrderBy : public abstraction::SqlQuery {
@@ -17,6 +18,7 @@ namespace orm::query {
         OrderBy(std::string query, db::Sort sort);
 
         std::string validateQuery() override;
+        Limit limit(int count);
     };
 }
 

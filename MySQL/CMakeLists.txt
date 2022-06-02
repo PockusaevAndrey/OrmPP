@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.16)
 project(orm_mysql)
 
 set(CMAKE_CXX_STANDARD 20)
-set(VERSION 1.0.0)
+set(VERSION 1.3.0)
 include_directories(../orm/include)
 
 file(GLOB

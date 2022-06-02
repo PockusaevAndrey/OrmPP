@@ -9,12 +9,17 @@
 #include "orm/components/SqlQuery.hpp"
 #include "orm/query/Where.hpp"
 #include "Join.hpp"
+#include "Limit.hpp"
 
 namespace orm::query {
     class From : public abstraction::SqlQuery {
         db::Table _table;
         std::vector <std::string> _columnName{};
+#ifdef ORM_FUNCTION
+        bool throw_err = false;
+#else
         bool throw_err = true;
+#endif
 
     public:
         From(std::string query, db::Table table, std::vector <std::string> columns);
@@ -24,6 +29,7 @@ namespace orm::query {
         Join join(JoinType joinType, db::Table table, const db::Condition& condition);
 
         Where where(db::Condition condition);
+        Limit limit(int count);
     };
 }
 

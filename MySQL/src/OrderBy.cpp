@@ -16,3 +16,7 @@ std::string orm::query::OrderBy::validateQuery() {
 
 orm::query::OrderBy::OrderBy(std::string query, orm::db::Sort sort) : SqlQuery(query), _sort(std::move(sort)) {
 }
+
+orm::query::Limit orm::query::OrderBy::limit(int count) {
+    return { validateQuery(), count };
+}

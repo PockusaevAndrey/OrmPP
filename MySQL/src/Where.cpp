@@ -21,3 +21,7 @@ std::string orm::query::Where::validateQuery() {
 orm::query::OrderBy orm::query::Where::orderBy(orm::db::Sort sort) {
     return {validateQuery(), std::move(sort)};
 }
+
+orm::query::Limit orm::query::Where::limit(int count) {
+    return {validateQuery(), count};
+}

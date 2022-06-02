@@ -35,3 +35,8 @@ template<typename... T>
 orm::query::From orm::query::Select<T...>::from(orm::db::Table table) {
     return {validateQuery(), std::move(table), _columnName};
 }
+
+template<typename... T>
+orm::query::Limit orm::query::Select<T...>::limit(int count) {
+    return {validateQuery(), count};
+}

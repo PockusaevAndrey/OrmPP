@@ -15,7 +15,7 @@
 
 namespace orm::db {
     template<typename T>
-    class Column final {
+    class Column {
     public:
         std::string name{}, tableName{};
 

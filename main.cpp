@@ -1,6 +1,8 @@
 #include <iostream>
+#define ORM_FUNCTION
 #include "orm/query/Select.hpp"
 #include "orm.hpp"
+#include "orm/components/Function.hpp"
 
 
 OrmDatabase(TasksDb,
@@ -44,7 +46,8 @@ OrmDatabase(EmployesDb,
 int main() {
     TasksDb tdb;
     EmployesDb empl;
-    std::cout << (std::string) orm::query::Select(tdb.tAllTaskInfo.id, empl.tEmployees.name)
+    orm::db::Function<int, std::string, int, bool> now("now");
+    std::cout << (std::string) orm::query::Select(now(tdb.tAllTaskInfo.id.name, 1, true), empl.tEmployees.name)
             .from(tdb.tAllTaskInfo)
             .join(orm::query::LEFT, empl.tEmployees, tdb.tAllTaskInfo.owner_name == empl.tEmployees.name)
             .where(
@@ -53,8 +56,7 @@ int main() {
             )
             .orderBy(
                     (tdb.tAllTaskInfo.id << orm::db::OrderSort::DESC)
-            )
+            ).limit(10)
               << std::endl;
-
     return 0;
 }

@@ -9,6 +9,7 @@
 #include "vector"
 #include "orm/components/Table.hpp"
 #include "orm/query/From.hpp"
+#include "orm/query/Limit.hpp"
 
 namespace orm::query{
     template<typename ...T>
@@ -17,6 +18,7 @@ namespace orm::query{
         Select(db::Column <T>... rows);
         std::string validateQuery() override;
         orm::query::From from(orm::db::Table table);
+        Limit limit(int);
     private:
         std::vector<std::string> _columnName{};
 

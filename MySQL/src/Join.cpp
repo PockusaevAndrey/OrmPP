@@ -7,6 +7,9 @@
 #include <utility>
 
 std::string orm::query::Join::validateQuery() {
+#ifdef ORM_FUNCTION
+    throw_err = false;
+#endif
     std::string join_string = "\n";
     switch (_joinType) {
         case JoinType::INNER:
@@ -30,8 +33,9 @@ std::string orm::query::Join::validateQuery() {
             for (auto &column: _columnTableCols)
                 if (selected_column == column) return true;
             return false;
-        }(selected_column) and throw_err)
-            throw InvalidColumn();
+        }(selected_column) and throw_err) {
+//            throw InvalidColumn();
+        }
     }
     return _sqlQuery + " " + join_string;
 }
@@ -50,5 +54,9 @@ orm::query::Join
 orm::query::Join::join(orm::query::JoinType joinType, orm::db::Table table, const orm::db::Condition &condition) {
     throw_err = false;
     return {validateQuery(), joinType, std::move(table), condition, _columnName, _columnTableCols};
+}
+
+orm::query::Limit orm::query::Join::limit(int count) {
+    return {validateQuery(), count};
 }
 

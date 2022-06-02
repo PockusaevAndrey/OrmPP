@@ -13,6 +13,7 @@ orm::query::From::From(std::string query, orm::db::Table table, std::vector<std:
 }
 
 std::string orm::query::From::validateQuery() {
+
     auto isRow = [&](const std::string &row) -> bool {
         for (int i = 0; i < _table.getColumnSize(); i++) {
             if (row == _table[i]) {
@@ -23,7 +24,7 @@ std::string orm::query::From::validateQuery() {
     };
     for (auto &i: _columnName) {
         if (!isRow(i) && throw_err) {
-            throw InvalidColumn();
+//            throw InvalidColumn();
         }
     }
 
@@ -44,5 +45,9 @@ orm::query::Join
 orm::query::From::join(orm::query::JoinType joinType, orm::db::Table table, const orm::db::Condition &condition) {
     throw_err = false;
     return {validateQuery(), joinType, std::move(table), condition, _columnName, _table.getColumns()};
+}
+
+orm::query::Limit orm::query::From::limit(int count) {
+    return {validateQuery(), count};
 }
 
