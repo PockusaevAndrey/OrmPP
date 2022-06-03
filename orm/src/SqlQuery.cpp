@@ -19,3 +19,7 @@ bool orm::abstraction::SqlQuery::contains(std::string value) {
 orm::abstraction::SqlQuery::operator std::string() {
     return this->validateQuery();
 }
+
+orm::abstraction::SqlQuery::operator db::Column<std::string>() {
+    return {"(" + validateQuery() + ")"};
+}

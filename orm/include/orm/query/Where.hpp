@@ -18,7 +18,7 @@
 
 
 namespace orm::query {
-    class Where : abstraction::SqlQuery {
+    class Where : public abstraction::SqlQuery {
         db::Condition _condition;
     public:
         Where(std::string query, db::Condition condition);

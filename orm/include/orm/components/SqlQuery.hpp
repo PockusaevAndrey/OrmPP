@@ -6,6 +6,7 @@
 #define orm_SQLQUERY_HPP
 
 #include <string>
+#include "Column.hpp"
 
 namespace orm::abstraction
 {
@@ -23,6 +24,7 @@ namespace orm::abstraction
         virtual std::string validateQuery() = 0;
 
         operator std::string();
+        operator db::Column<std::string>();
 
     protected:
         std::string _sqlQuery;
