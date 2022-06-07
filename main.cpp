@@ -1,8 +1,9 @@
 #include <iostream>
+// Include generating database files
+#include "NewObjectsDB.hpp"
 #include "EmployesDb.hpp"
 #include "Config.hpp"
 #include "etddb/MySqlClient.hpp"
-#include "NewObjectsDB.hpp"
 
 
 int main() {
